@@ -7,19 +7,26 @@ app = 'cloud-torrent'
 primary_region = 'sin'
 
 [build]
+  dockerfile = '.github/Dockerfile'
   [build.args]
     GO_VERSION = '1.23.0'
 
 [env]
-  PORT = '8080'
+  PORT = '3000'
 
 [http_service]
-  internal_port = 8080
+  internal_port = 3000
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
+
+[mounts]
+  source = "cloud-torrent"
+  destination = "/downloads"
+  processes = ["disk"] # optional - attach volumes to Machines that belong to one or more process groups
+  initial_size = "20gb" # optional - the size of the volume created on first deploy
 
 [[vm]]
   memory = '1gb'
