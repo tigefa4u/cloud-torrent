@@ -25,7 +25,7 @@ primary_region = 'sin'
 [mounts]
   source = "cloud-torrent"
   destination = "/app/downloads"
-  processes = ["disk"] # optional - attach volumes to Machines that belong to one or more process groups
+  processes = ["app"] # optional - attach volumes to Machines that belong to one or more process groups
   initial_size = "20gb" # optional - the size of the volume created on first deploy
 
 [[vm]]
